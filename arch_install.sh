@@ -20,7 +20,7 @@ pacstrap -K /mnt base linux linux-firmware networkmanager grub efibootmgr os-pro
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt <<EOF
+arch-chroot /mnt<<EOF
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 
@@ -43,7 +43,7 @@ EDITOR=nano visudo
 
 nano /etc/default/grub
 grub-install --efi-directory=/efi
-grub-mkconfig -O /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
 
 umount -a
 
