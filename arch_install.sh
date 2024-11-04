@@ -24,8 +24,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 
-nano /mnt/etc/locale.gen
-nano /mnt/etc/default/grub
+nano /etc/locale.gen
+nano /etc/default/grub
 
 
 locale-gen
