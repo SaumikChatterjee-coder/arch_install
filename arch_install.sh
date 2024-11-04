@@ -12,7 +12,7 @@ mkfs.fat -F 32 $efi_part
 mkfs.ext4 $root_part
 mkswap $swap_part
 
-mount --mkdir $efi_part /mnt/efi
+
 mount $root_part /mnt
 swapon $swap_part
 
@@ -21,7 +21,11 @@ pacstrap -K /mnt base linux linux-firmware networkmanager grub efibootmgr os-pro
 genfstab -U /mnt >> /mnt/etc/fstab
 
 
-echo "ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+echo "
+
+mount --mkdir $efi_part /efi
+
+ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 
 nano /etc/locale.gen
