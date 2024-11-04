@@ -45,7 +45,7 @@ passwd arch
 EDITOR=nano visudo
 
 
-grub-install --efi-directory=/efi
+grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 exit
