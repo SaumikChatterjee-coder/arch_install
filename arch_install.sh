@@ -12,7 +12,7 @@ mkfs.fat -F 32 $efi_part
 mkfs.ext4 $root_part
 mkswap $swap_part
 
-mount --mkdir $efi_part /mnt/boot
+mount --mkdir $efi_part /mnt/efi
 mount $root_part /mnt
 swapon $swap_partlslsnan
 
@@ -45,7 +45,7 @@ passwd arch
 EDITOR=nano visudo
 
 
-grub-install --efi-directory=/boot
+grub-install --efi-directory=/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
 exit
