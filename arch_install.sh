@@ -14,18 +14,18 @@ mkswap $swap_part
 
 mount --mkdir $efi_part /mnt/efi
 mount $root_part /mnt
-swapon $swap_partlslsnan
+swapon $swap_part
 
 pacstrap -K /mnt base linux linux-firmware networkmanager grub efibootmgr os-prober sudo nano
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
+
+echo "ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+hwclock --systohc
+
 nano /mnt/etc/locale.gen
 nano /mnt/etc/default/grub
-
-arch-chroot /mnt<<EOF
-ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
-hwclock --systohc
 
 
 locale-gen
@@ -50,9 +50,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 exit
 umount -a
-reboot
+reboot" > /mnt/chroot_script.sh
 
-EOF
+chmod +x chroot_script.sh
+
+
+
+arch-chroot /mnt ./chroot_script.sh
 
 
 
