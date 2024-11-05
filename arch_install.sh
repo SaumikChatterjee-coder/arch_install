@@ -56,7 +56,7 @@ exit
 umount -a
 reboot" > /mnt/chroot_script.sh
 
-chmod +x chroot_script.sh
+chmod +x /mnt/chroot_script.sh
 
 
 
